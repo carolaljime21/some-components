@@ -1,0 +1,145 @@
+/* Importa la fuente */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap");
+
+/* Resetea los estilos por defecto */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Estilos globales */
+body {
+  font-family: 'Inter', sans-serif; /* Añade comillas para fuentes importadas */
+  height: 100vh;
+  color: white;
+  background-color: #e9e9f0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+/* Estilos del contenedor */
+.container {
+  width: 100%;
+  max-width: 820px; /* Cambia width duplicado por max-width */
+  height: 340px;
+  display: flex;
+  gap: 10px;
+  margin-inline: 50px;
+}
+
+/* Estilos de la tarjeta */
+.card {
+  min-width: 70px;
+  height: 100%;
+  border-radius: 30px;
+  overflow: hidden;
+  display: flex;
+  align-items: flex-end;
+  flex-grow: 1;
+  cursor: pointer;
+  position: relative;
+  transition: flex-grow 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+  --transition-timing: 0.35s;
+}
+
+.card:hover {
+  flex-grow: 7;
+}
+
+/* Fondo de la tarjeta */
+.card > .background {
+  position: absolute;
+  inset: 0;
+  object-fit: cover;
+  object-position: center;
+  filter: brightness(0.4);
+  z-index: -1;
+  transition: var(--transition-timing) ease;
+}
+
+.card:hover > .background {
+  filter: brightness(1);
+}
+
+/* Contenido de la tarjeta */
+.card > .card-content {
+  display: flex;
+  align-items: center;
+  position: absolute;
+  left: 10px;
+  right: 10px;
+  bottom: 20px;
+  overflow: hidden;
+  transition: var(--transition-timing);
+  z-index: 10;
+}
+
+.card:hover > .card-content {
+  inset: 20px;
+  top: auto;
+}
+
+.card-content > * {
+  transition: var(--transition-timing);
+}
+
+/* Imagen de perfil */
+.card-content > .profile-image {
+  min-width: 50px;
+  max-width: 50px;
+  height: 50px;
+  border: 1px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.card:hover .profile-image {
+  border: 1px solid #FFB1B1;
+}
+
+/* Estilo del icono SVG en la imagen de perfil */
+.profile-image > i {
+  font-size: 24px; /* Ajusta el tamaño del icono de Font Awesome */
+  color: #fefefe; /* Cambia stroke por color para Font Awesome */
+}
+
+.card:hover .profile-image > i {
+  color: #FFB1B1; /* Cambia stroke por color para Font Awesome */
+}
+
+/* Título de la tarjeta */
+.card-content > .title {
+  white-space: pre;
+  margin-left: 10px;
+  transform: translateX(100%); /* Usa transform en lugar de translate */
+  opacity: 0;
+}
+
+.card:hover .title {
+  opacity: 1;
+  transform: translateX(0); /* Usa transform en lugar de translate */
+}
+
+/* Fondo de la tarjeta */
+.card > .backdrop {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 100px;
+  z-index: 0;
+  background: linear-gradient(to bottom, transparent, rgba(0, 0, 0, 0.7));
+}
